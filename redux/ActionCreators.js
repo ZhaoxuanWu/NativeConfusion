@@ -1,7 +1,7 @@
-import * ActionTypes from './ActionTypes';
+import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
-export const fetchCommments = () => (dispatch) => {
+export const fetchComments = () => (dispatch) => {
   return fetch(baseUrl + 'comments')
     .then(response => {
       if (response.ok) {
@@ -11,11 +11,11 @@ export const fetchCommments = () => (dispatch) => {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
         error.response = response;
         throw error;
-      },
-      error => {
-        var error = new Error(error.message)
-        throw errMess;
       }
+    },
+    error => {
+      var errmess = new Error(error.message)
+      throw errmess;
     })
     .then(response => response.json())
     .then(comments => dispatch(addComments(comments)))
@@ -44,11 +44,11 @@ export const fetchDishes = () => (dispatch) => {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
         error.response = response;
         throw error;
-      },
-      error => {
-        var error = new Error(error.message)
-        throw errMess;
       }
+    },
+    error => {
+      var errmess = new Error(error.message)
+      throw errmess;
     })
     .then(response => response.json())
     .then(dishes => dispatch(addDishes(dishes)))
@@ -81,11 +81,11 @@ export const fetchPromos = () => (dispatch) => {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
         error.response = response;
         throw error;
-      },
-      error => {
-        var error = new Error(error.message)
-        throw errMess;
       }
+    },
+    error => {
+      var errmess = new Error(error.message)
+      throw errmess;
     })
     .then(response => response.json())
     .then(promos => dispatch(addPromos(promos)))
@@ -118,11 +118,11 @@ export const fetchLeaders = () => (dispatch) => {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
         error.response = response;
         throw error;
-      },
-      error => {
-        var error = new Error(error.message)
-        throw errMess;
       }
+    },
+    error => {
+      var errmess = new Error(error.message)
+      throw errmess;
     })
     .then(response => response.json())
     .then(leaders => dispatch(addLeaders(leaders)))

@@ -14,7 +14,7 @@ export const ConfigureStore = () => {
       promotions,
       leaders
     }),
-    applyMiddleware(thunk, looger)
+    applyMiddleware(thunk, logger)
   );
 
   return store;
