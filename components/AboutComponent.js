@@ -3,6 +3,7 @@ import { FlatList, ScrollView, View, Text } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+import { Loading } from './LoadingComponent';
 
 const mapStateToProps = state => {
   return {
@@ -50,6 +51,30 @@ class About extends Component {
   }
 
   render() {
+
+    if (this.props.leaders.isLoading) {
+      return (
+        <ScrollView>
+          {this.renderHistory()}
+          <Card
+            title='Corporate Leadership'>
+            <Loading />
+          </Card>
+        </ScrollView>
+      )
+    }
+    else if (this.props.leaders.errMess) {
+      return (
+        <ScrollView>
+          {this.renderHistory()}
+          <Card
+            title='Corporate Leadership'>
+            <Text>{this.props.leaders.errMess}</Text>
+          </Card>
+        </ScrollView>
+      )
+    }
+    
     return (
       <ScrollView>
         {this.renderHistory()}
